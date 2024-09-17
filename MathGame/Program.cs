@@ -45,6 +45,8 @@ switch (option)
 }
 
 
+//Methods
+
 void AdditionGame()
 {
 
@@ -207,7 +209,6 @@ void MultiplicationGame()
 }
 
 
-
 void DivisionGame()
 {
 
@@ -263,3 +264,4 @@ void DivisionGame()
         }
     }
 }
+
