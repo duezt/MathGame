@@ -9,10 +9,21 @@ string name = "";
 DateTime date = DateTime.Now;
 string option = "";
 
+//List
+
+var previousGames = new List<string>();
+
+
+
 
 //Display menu and user name's input
 Console.WriteLine("What is your name?");
 name = Console.ReadLine();
+
+while (true)
+{
+
+
 Console.WriteLine($@"Welcome to the math game {name}, today is {date.DayOfWeek}
 Please select one of the following games option:
 A - Addition 
@@ -39,6 +50,12 @@ switch (option)
     case "d":
         DivisionGame();
         break;
+        case "e":
+        foreach (var score in previousGames)
+        {
+            Console.WriteLine(score);
+        }
+        break;
     default:
         Console.WriteLine("Invalid input");
         break;
@@ -51,9 +68,9 @@ void AdditionGame()
 {
 
 
-
+    var dateStarted = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
     var rand = new Random();
-    
+
     int correctAnwsercounter = 0;
     int IncorrectAwnserCounter = 0;
 
@@ -67,7 +84,7 @@ void AdditionGame()
         Console.WriteLine($"{firstNumber} + {secondNumber} = ?");
 
 
-        while (isNumber == false) 
+        while (isNumber == false)
         {
             string userInput = Console.ReadLine().Trim();
             int userAnwser;
@@ -98,7 +115,11 @@ void AdditionGame()
 
             }
         }
+
+
     }
+    var scoreResult = correctAnwsercounter < IncorrectAwnserCounter ? $"you have lost this addition game with {IncorrectAwnserCounter} of 5 questions" : $"you have Won this addition game with {correctAnwsercounter} of 5 questions";
+    previousGames.Add($"You played this game at {dateStarted} and {scoreResult.ToUpper()}");
 }
 
 
@@ -227,7 +248,7 @@ void DivisionGame()
 
         //This variable would give always a divend that will give a intenger result.
         int dividend = firstNumber * secondNumber;
-        int operationResults =  dividend / firstNumber;
+        int operationResults = dividend / firstNumber;
         Console.WriteLine($"{dividend} / {firstNumber} = ?");
 
 
@@ -263,5 +284,6 @@ void DivisionGame()
             }
         }
     }
+}
 }
 
