@@ -14,8 +14,8 @@ namespace MathGame
 
         public GameEngine() 
         {
-            previousGames = new List<string>(); 
-        
+            previousGames = new List<string>();
+            
         }
       
 
