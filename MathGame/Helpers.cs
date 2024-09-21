@@ -9,6 +9,19 @@ namespace MathGame
     internal class Helpers
     {
 
+        public void SaveGameHistory(string path, List<string> list )
+        {
+            using (StreamWriter outPutFile = new StreamWriter(path))
+            {
+                foreach (var gameScoreHistory in list)
+                {
+                    outPutFile.WriteLine(gameScoreHistory);
+                }
+            }
+
+            Console.WriteLine("Game Saved History");
+        }
+
         public int CheckUserInput()
         {
             bool isNumber = false;
@@ -16,7 +29,7 @@ namespace MathGame
             while (isNumber == false)
             {
                 string userInput = Console.ReadLine().Trim();
-                
+
 
                 if (int.TryParse(userInput, out userNumber))
                 {
@@ -36,5 +49,6 @@ namespace MathGame
 
             return userNumber;
         }
+
     }
 }

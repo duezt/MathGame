@@ -16,9 +16,13 @@ namespace MathGame
         DateTime date = DateTime.Now;
         string option = "";
 
+
+        //FilePath Variable
+
+        string docPath = @"C:\Users\Duezt\source\repos\MathGame\MathGame\GameHistory.txt";
         //List
         GameEngine game = new GameEngine();
-
+        Helpers helper = new Helpers(); 
         //Display menu and user name's input
         public void MainMenu()
         {
@@ -29,7 +33,6 @@ namespace MathGame
             string option = "";
 
             //List
-            var game = new GameEngine();
 
             //Display menu and user name's input
             Console.WriteLine("What is your name?");
@@ -56,6 +59,7 @@ Q - Quit the game");
                 {
                     case "a":
                         game.AdditionGame();
+                       
                         break;
                     case "s":
                         game.SubtractionGame();
@@ -73,9 +77,9 @@ Q - Quit the game");
                         }
                         else
                         {
-                            foreach (var score in game.previousGames)
+                            foreach (var gameScore in game.previousGames)
                             {
-                                Console.WriteLine(score);
+                                Console.WriteLine(gameScore);
                             }
                         }
 
@@ -88,7 +92,7 @@ Q - Quit the game");
                         break;
                 }
 
-
+                helper.SaveGameHistory(docPath, game.previousGames);
                 Console.WriteLine("Press any key to go back to the menu");
                 Console.ReadLine();
                 Console.Clear();
@@ -99,5 +103,8 @@ Q - Quit the game");
         }
 
 
+
+
+ 
     }
 }
