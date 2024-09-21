@@ -89,7 +89,10 @@ Q - Quit the game");
                 }
 
 
-                //Methods
+                Console.WriteLine("Press any key to go back to the menu");
+                Console.ReadLine();
+                Console.Clear();
+
 
             } while (true);
 

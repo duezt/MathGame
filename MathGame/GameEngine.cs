@@ -12,14 +12,15 @@ namespace MathGame
 
         public List<string> previousGames { get; private set; }
 
-        public GameEngine() 
+        public GameEngine()
         {
             previousGames = new List<string>();
-            
-        }
-      
 
-       int timesPlayed = 0;
+        }
+
+
+        int timesPlayed = 0;
+        Helpers method = new Helpers();
 
         internal void AdditionGame()
         {
@@ -41,43 +42,25 @@ namespace MathGame
                 Console.WriteLine($"{firstNumber} + {secondNumber} = ?");
 
 
-                while (isNumber == false)
+                int userAnwser = method.CheckUserInput();
+
+
+                if (userAnwser == operationResults)
                 {
-                    string userInput = Console.ReadLine().Trim();
-                    int userAnwser;
-
-                    if (int.TryParse(userInput, out userAnwser))
-                    {
-
-
-
-                        if (userAnwser == operationResults)
-                        {
-                            Console.WriteLine($"You're anwser is correct! {firstNumber} + {secondNumber} = {operationResults}");
-                            correctAnwsercounter++;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"You're anwser is incorrect! the correct anwser is {operationResults} and you're answer was {userAnwser}");
-                            IncorrectAwnserCounter++;
-                        }
-
-                        isNumber = true;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please, type in a number not letters");
-
-
-                    }
+                    Console.WriteLine($"You're anwser is correct! {firstNumber} + {secondNumber} = {operationResults}");
+                    correctAnwsercounter++;
                 }
-
-
+                else
+                {
+                    Console.WriteLine($"You're anwser is incorrect! the correct anwser is {operationResults} and you're answer was {userAnwser}");
+                    IncorrectAwnserCounter++;
+                }
             }
             var scoreResult = correctAnwsercounter < IncorrectAwnserCounter ? $"you lost with {IncorrectAwnserCounter} incorrect anwsers of 5 questions" : $"you have Won this addition game with {correctAnwsercounter} of 5 questions";
             previousGames.Add($"{++timesPlayed}- You played Addition game at {dateStarted} and {scoreResult.ToUpper()}");
+
         }
+
 
 
 
