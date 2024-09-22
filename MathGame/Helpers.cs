@@ -9,6 +9,8 @@ namespace MathGame
     internal class Helpers
     {
 
+
+   
         public void SaveGameHistory(string path, List<string> list )
         {
             using (StreamWriter outPutFile = new StreamWriter(path))

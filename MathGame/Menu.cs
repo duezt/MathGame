@@ -85,6 +85,7 @@ Q - Quit the game");
 
                         break;
                     case "q":
+                        helper.SaveGameHistory(docPath, game.previousGames);
                         Environment.Exit(1);
                         break;
                     default:
@@ -92,7 +93,7 @@ Q - Quit the game");
                         break;
                 }
 
-                helper.SaveGameHistory(docPath, game.previousGames);
+             
                 Console.WriteLine("Press any key to go back to the menu");
                 Console.ReadLine();
                 Console.Clear();
